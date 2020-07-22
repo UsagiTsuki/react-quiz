@@ -1,0 +1,36 @@
+{
+  "name": "react-quiz",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development next dev",
+    "build": "cross-env NODE_ENV=production next build",
+    "start": "cross-env NODE_ENV=production next start",
+    "export": "cross-env NODE_ENV=production next build && next export"
+  },
+  "dependencies": {
+    "@types/react-router-dom": "^5.1.5",
+    "axios": "^0.19.2",
+    "clsx": "^1.1.1",
+    "framer-motion": "^1.11.1",
+    "isomorphic-unfetch": "^3.0.0",
+    "moment-timezone": "^0.5.31",
+    "next": "9.3.5",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "styled-components": "^5.1.1",
+    "styled-icons": "^10.6.0",
+    "swr": "^0.2.3"
+  },
+  "devDependencies": {
+    "@types/node": "^14.0.14",
+    "@types/react": "^16.9.41",
+    "babel-plugin-styled-components": "^1.10.7",
+    "cross-env": "^7.0.2",
+    "node-sass": "^4.14.1",
+    "typescript": "^3.9.6"
+  },
+  "resolutions": {
+    "styled-components": "^5"
+  }
+}

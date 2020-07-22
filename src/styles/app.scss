@@ -1,0 +1,37 @@
+// font-family: 'Kosugi Maru', sans-serif;
+// font-family: 'MuseoModerno', cursive;
+// font-family: 'Orbitron', sans-serif;
+// font-family: 'Nunito', sans-serif;
+
+html,
+body {
+  overflow-x: hidden;
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Nunito', 'Kosugi Maru', '游ゴシック', YuGothic, 'ヒラギノ角ゴ ProN W3', 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo,
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  width: 100vw;
+  height: 100vh;
+}
+
+/*
+ * src/components/organisms/grid-link-list.tsx
+ * クリック時のイベント
+*/
+.list-active {
+  transform: scale(1.03);
+  transition: all 0.1s ease-in;
+  background: #0e2349 !important;
+  color: #fff !important;
+}
+
+.open-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
