@@ -12,7 +12,7 @@ type Props = {
   isLoading: boolean;
   quizList: QuizModelType[];
   listCount: number;
-  handleClick: (quizId: number) => void;
+  handleClick: (quizId: string) => void;
 };
 
 const Root = styled.div`
@@ -59,7 +59,7 @@ const Main: FC<Props> = props => {
           {quizList
             ? quizList.map((quiz, i) => {
                 return (
-                  <InOrderRightSlideChildren number={i} key={quiz.id}>
+                  <InOrderRightSlideChildren number={i} key={i}>
                     <GridLinkList
                       title={quiz.name}
                       tagName={quiz.category_name || null}

@@ -18,22 +18,32 @@ const API_KEY = process.env.API_KEY || '';
  * クイズリストの取得
  */
 export const getQuizzes = async (): Promise<quizType> => {
-  return axios.get(`${QUIZ_API_URL}/api/search/quizzes`);
+  return axios.get(`${API_URL}/quiz`, {
+    headers: {
+      'Content-type': 'application/json',
+      'X-API-KEY': API_KEY
+    }
+  });
 };
 
 /**
  * スラッグを条件にクイズを取得
  */
 export const getQuizBySlug = async (slug): Promise<quizType> => {
-  return axios.get(`${QUIZ_API_URL}/api/search/quizzes?slug=${slug}`);
+  return axios.get(`${API_URL}/quiz?filters=slug[equals]${slug}`, {
+    headers: {
+      'Content-type': 'application/json',
+      'X-API-KEY': API_KEY
+    }
+  });
 };
 
 /**
  * クイズIDに紐づく問題を取得
  * : 時間があればmodelを作成し、「/api/questions.ts」でパラメータ制限対応を
  */
-export const getQuestionsByQuizId = (quizId): Promise<questionType> => {
-  const urlParam = `filters=quiz_id[equals]${quizId}`;
+export const getQuestionsByQuizSlug = (slug): Promise<questionType> => {
+  const urlParam = `filters=quiz_slug[equals]${slug}`;
   return axios.get(`${API_URL}/questions?${urlParam}`, {
     headers: {
       'Content-type': 'application/json',

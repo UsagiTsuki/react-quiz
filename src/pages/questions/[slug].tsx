@@ -6,7 +6,7 @@ import ResponseQuestionType from '@/models/responses/response-question-type';
 import QuizModelType from '@/models/sources/quiz.model';
 import NomalButton from '@/components/atoms/buttons/nomal-button';
 import QuestionContents from '@/components/organisms/question-contents';
-import { getQuizzes, getQuizBySlug, getQuestionsByQuizId } from '@/services/axios-api-lists';
+import { getQuizzes, getQuizBySlug, getQuestionsByQuizSlug } from '@/services/axios-api-lists';
 import QuestionResult from '@/components/organisms/question-result';
 
 type staticProps = {
@@ -83,8 +83,8 @@ const QuestionPage = props => {
                 {question.current === 9 ? (
                   <NomalButton fullwidth={false} height={40} color={`primary`} text={`結果画面へ`} handleClick={question.toggleResult} />
                 ) : (
-                  // <NomalButton fullwidth={false} height={40} color={`primary`} text={`次へ`} handleClick={question.next} />
-                  <NomalButton fullwidth={false} height={40} color={`primary`} text={`結果画面へ`} handleClick={question.toggleResult} />
+                  <NomalButton fullwidth={false} height={40} color={`primary`} text={`次へ`} handleClick={question.next} />
+                  // <NomalButton fullwidth={false} height={40} color={`primary`} text={`結果画面へ`} handleClick={question.toggleResult} />
                 )}
               </ButtonWrap>
             </>
@@ -109,8 +109,7 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async ({ params }): Promise<staticProps> => {
   const { slug } = params;
   const { data } = await getQuizBySlug(slug);
-  const quizId = data.contents ? data.contents[0].id : '';
-  const { data: responseQuestionLists } = await getQuestionsByQuizId(quizId);
+  const { data: responseQuestionLists } = await getQuestionsByQuizSlug(slug);
 
   return { props: { responseQuestionLists, quiz: data.contents[0], slug } };
 };

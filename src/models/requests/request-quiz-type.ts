@@ -1,11 +1,11 @@
 type RequestQuizType = {
-  id?: number;
+  id?: string;
   category_id?: string;
   slug?: string;
 };
 
 export class RequestQuizModel {
-  id: number;
+  id: string;
   category_id: string;
   slug: string;
 }

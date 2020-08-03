@@ -7,7 +7,7 @@ export default (req, res) => {
   const resData: ResponseQuizType = {
     contents: [
       {
-        id: 1,
+        id: '1',
         name: '',
         details: '',
         slug: '',

@@ -1,6 +1,6 @@
 type ResponseQuizType = {
   contents: {
-    id: number;
+    id: string;
     name: string;
     details: string;
     slug: string;

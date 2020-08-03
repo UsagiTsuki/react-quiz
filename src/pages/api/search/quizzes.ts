@@ -10,7 +10,7 @@ import { getQueryCount } from '@/utils/object-query-count';
 
 const quizData: QuizModelType[] = [
   {
-    id: 1,
+    id: '1',
     name: '基礎知識問題',
     details: 'HTML5.1の基本的な書式と各部の名称について身につけましょう。',
     category_id: '1',
@@ -19,7 +19,7 @@ const quizData: QuizModelType[] = [
     updated_at: '2020-07-10 12:00:00'
   },
   {
-    id: 2,
+    id: '2',
     name: '基礎要素とカテゴリー',
     details: 'HTML5ではインラインレベル要素、ブロックレベル要素が廃止され、より詳細な分類ができました。それぞれの意味を理解しましょう。',
     category_id: '1',
@@ -28,7 +28,7 @@ const quizData: QuizModelType[] = [
     updated_at: '2020-07-10 12:00:00'
   },
   {
-    id: 3,
+    id: '3',
     name: 'サブ系の要素',
     details: 'すべての要素に共通して指定できる属性についての理解をしましょう。',
     category_id: '1',
@@ -37,7 +37,7 @@ const quizData: QuizModelType[] = [
     updated_at: '2020-07-10 12:00:00'
   },
   {
-    id: 4,
+    id: '4',
     name: '画像などの要素問題',
     details: '画像の仕様が変わりました。内容をきちんと把握しておきましょう。',
     category_id: '1',
@@ -46,7 +46,7 @@ const quizData: QuizModelType[] = [
     updated_at: '2020-07-10 12:00:00'
   },
   {
-    id: 5,
+    id: '5',
     name: 'その他の要素についての問題',
     details: '重要ですが忘れやすい要素についてもきちんと理解しておきましょう',
     category_id: '1',

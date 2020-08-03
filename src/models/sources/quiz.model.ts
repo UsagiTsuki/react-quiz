@@ -4,7 +4,7 @@
  * "はてな" はデータ整形項目
  */
 type QuizModelType = {
-  id: number;
+  id: string;
   name: string;
   details: string;
   category_id: string;
