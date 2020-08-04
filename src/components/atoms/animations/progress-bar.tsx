@@ -20,12 +20,13 @@ const Bar = styled.div`
 const ProgressBar: FC<Props> = props => {
   const [percent, setPercent] = useState(0);
 
-  const timeoutID = setTimeout(() => {
-    setPercent(props.percent);
-  }, 400);
-
   useEffect(() => {
-    return clearTimeout(timeoutID);
+    const timeoutID = setTimeout(() => {
+      setPercent(props.percent);
+    }, 400);
+    return () => {
+      clearTimeout(timeoutID);
+    };
   }, [percent]);
 
   return (

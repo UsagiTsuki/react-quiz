@@ -115,26 +115,6 @@ export const useQuestion = (data: ResponseQuestionType) => {
   const [isResult, setIsResult] = useState(false);
   const [resultList, setResultList] = useState({});
 
-  useEffect(() => {
-    /**
-     * 結果ボタン押下時に結果を集計
-     */
-    const lists = data.contents.map(question => {
-      return <resultListType>{
-        id: question.id,
-        qmark: `Q.${question.question_number}`,
-        result: map.map[question.id] === question.correct_answer ? '✔' : '×',
-        correct_answer: question.correct_answer
-      };
-    });
-    const resultOutput = {
-      lists: lists,
-      length: data.contents.length,
-      count: lists.reduce((prev, question) => prev + (question.result === '✔' ? 1 : 0), 0)
-    };
-    setResultList(resultOutput);
-  }, [isResult]);
-
   /**
    * 選択された問題を返す
    */
@@ -142,9 +122,30 @@ export const useQuestion = (data: ResponseQuestionType) => {
     return data.contents[number.current];
   }, [number.current]);
 
+  /**
+   * 結果を集計
+   */
+  const aggregateLists = useMemo(() => {
+    return data.contents.map(question => {
+      return <resultListType>{
+        id: question.id,
+        qmark: `Q.${question.question_number}`,
+        result: map.map[question.id] === question.correct_answer ? '✔' : '×',
+        correct_answer: question.correct_answer
+      };
+    });
+  }, [map]);
+
   const toggleResult = useCallback(() => {
+    const resultOutput = {
+      lists: aggregateLists,
+      length: data.contents.length,
+      count: aggregateLists.reduce((prev, question) => prev + (question.result === '✔' ? 1 : 0), 0)
+    };
+    setResultList(resultOutput);
+    // 結果画面表示フラグをON
     setIsResult(x => !x);
-  }, []);
+  }, [aggregateLists]);
 
   return <questionType>{
     current: number.current,
