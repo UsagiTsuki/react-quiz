@@ -149,7 +149,7 @@ const QuestionResult: FC<Props> = props => {
           <ProgressBar percent={resultList.count * 10} />
         </ProgressWrap>
         <ButtonWrap>
-          <NomalButton fullwidth={false} height={40} color={`primary`} text={`再度受ける`} />
+          <NomalButton fullwidth={false} height={40} color={`primary`} text={`再度受ける`} handleClick={question.clear} />
           <MultiLink href={`/`}>
             <NomalButton fullwidth={false} height={40} color={`primary`} text={`一覧に戻る`} />
           </MultiLink>

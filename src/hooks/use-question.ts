@@ -13,9 +13,13 @@ export type numberType = {
   current: number;
   next: any;
   prev: any;
+  clear: () => void;
 };
 
 export type questionType = numberType & {
+  current: number;
+  next: any;
+  prev: any;
   selectedQuestion: QuestionModelType;
   mapAnswer: any;
   isResult: boolean;
@@ -27,6 +31,7 @@ export type answerMapType = {
   map: any;
   setCheck: any;
   setInput: any;
+  clear: () => void;
 };
 
 /**
@@ -63,7 +68,10 @@ const useNumber = (maxLength: number) => {
   return <numberType>{
     current,
     next,
-    prev
+    prev,
+    clear: useCallback(() => {
+      setCurrent(0);
+    }, [])
   };
 };
 
@@ -101,7 +109,10 @@ const useAnswerMapData = () => {
   return <answerMapType>{
     map: data,
     setCheck,
-    setInput
+    setInput,
+    clear: useCallback(() => {
+      setData({});
+    }, [])
   };
 };
 
@@ -147,6 +158,13 @@ export const useQuestion = (data: ResponseQuestionType) => {
     setIsResult(x => !x);
   }, [aggregateLists]);
 
+  const clear = useCallback(() => {
+    setIsResult(false);
+    setResultList({});
+    number.clear();
+    map.clear();
+  }, []);
+
   return <questionType>{
     current: number.current,
     next: number.next,
@@ -155,6 +173,7 @@ export const useQuestion = (data: ResponseQuestionType) => {
     mapAnswer: map,
     isResult,
     resultList,
-    toggleResult
+    toggleResult,
+    clear
   };
 };
